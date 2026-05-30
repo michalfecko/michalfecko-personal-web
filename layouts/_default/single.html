@@ -42,7 +42,7 @@
               <iframe src="https://player.vimeo.com/video/{{ .vimeo }}" title="{{ .alt | default "Vimeo video" }}" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
             </div>
           {{ else if or (eq .type "video") (in $videoExts $ext) }}
-            <video src="{{ .src | relURL }}"{{ with .poster }} poster="{{ . | relURL }}"{{ end }} controls preload="metadata" playsinline{{ if .loop }} loop muted{{ end }}{{ if .autoplay }} autoplay muted playsinline{{ end }}></video>
+            <video src="{{ .src | relURL }}"{{ with .poster }} poster="{{ . | relURL }}"{{ end }} controls preload="none" playsinline{{ if .loop }} loop muted{{ end }}{{ if .autoplay }} autoplay muted playsinline{{ end }}></video>
           {{ else }}
             <img src="{{ .src | relURL }}" alt="{{ .alt }}" loading="lazy">
           {{ end }}

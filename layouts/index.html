@@ -33,7 +33,7 @@
           <span class="project__date">{{ dateFormat "01.2006" $p.Params.date }}</span>
           {{ with $p.Params.cover }}
             <span class="project__cover" aria-hidden="true">
-              <img src="{{ . | relURL }}" alt="">
+              <img src="{{ . | relURL }}" alt="" loading="lazy" decoding="async">
             </span>
           {{ end }}
         </a>
