@@ -1,0 +1,57 @@
+{{ define "title" }}Info — {{ .Site.Title }}{{ end }}
+{{ define "main" }}
+<section class="info">
+  <div class="info__row">
+    <h2 class="info__label">About</h2>
+    <div class="info__body info__body--text">
+      <p>{{ .Site.Params.shortAbout }}</p>
+      <p>{{ .Site.Params.fullAbout }}</p>
+    </div>
+  </div>
+
+  <div class="info__row">
+    <h2 class="info__label">Services</h2>
+    <div class="info__body info__body--two-col">
+      <ul>
+        {{ range .Site.Params.servicesLeft }}<li>{{ .name }}</li>{{ end }}
+      </ul>
+      <ul>
+        {{ range .Site.Params.servicesRight }}<li>{{ .name }}</li>{{ end }}
+      </ul>
+    </div>
+  </div>
+
+    <div class="info__row">
+    <h2 class="info__label">Sidequests</h2>
+    <div class="info__body info__body--two-col">
+      <ul>
+        {{ range .Site.Params.servicesLeft }}<li>{{ .name }}</li>{{ end }}
+      </ul>
+      <ul>
+        {{ range .Site.Params.servicesRight }}<li>{{ .name }}</li>{{ end }}
+      </ul>
+    </div>
+  </div>
+
+  <div class="info__row">
+    <h2 class="info__label">Clients</h2>
+    <div class="info__body info__body--two-col">
+      <ul>
+        {{ range .Site.Params.clientsLeft }}<li>{{ if .url }}<a href="{{ .url }}" rel="noopener">{{ .name }}</a>{{ else }}{{ .name }}{{ end }}</li>{{ end }}
+      </ul>
+      <ul>
+        {{ range .Site.Params.clientsRight }}<li>{{ if .url }}<a href="{{ .url }}" rel="noopener">{{ .name }}</a>{{ else }}{{ .name }}{{ end }}</li>{{ end }}
+      </ul>
+    </div>
+  </div>
+
+  <div class="info__row">
+    <h2 class="info__label">Recognition</h2>
+    <div class="info__body">
+      <ul class="info__recognition">
+        {{ range .Site.Params.recognition }}<li>{{ .text }}</li>{{ end }}
+      </ul>
+    </div>
+  </div>
+</section>
+{{ end }}

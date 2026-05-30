@@ -1,0 +1,15 @@
+<header class="site-header">
+  <a class="site-header__brand" href="{{ "/" | relURL }}">
+    <span class="site-header__name">{{ .Site.Params.name }}</span>
+  </a>
+  <nav class="site-header__nav" aria-label="Primary">
+    {{ range .Site.Menus.main }}
+      {{ $active := or (eq $.RelPermalink .URL) (and (ne .URL "/") (hasPrefix $.RelPermalink .URL)) }}
+      <a href="{{ .URL | relURL }}"{{ if $active }} aria-current="page"{{ end }}>{{ .Name }}</a>
+    {{ end }}
+  </nav>
+  <div class="site-header__theme" role="group" aria-label="Theme">
+    <button type="button" data-theme-set="light" aria-label="Light theme">Light</button>
+    <button type="button" data-theme-set="dark" aria-label="Dark theme">Dark</button>
+  </div>
+</header>

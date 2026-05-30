@@ -1,0 +1,45 @@
+{{ define "main" }}
+{{ $projects := where .Site.RegularPages "Section" "projects" }}
+{{ $projects = $projects.ByParam "date" | first 1000 }}
+{{ $projects = sort $projects "Params.date" "desc" }}
+
+<section class="home" data-view="list">
+  <div class="home__controls" role="group" aria-label="Project view">
+    <div class="home__toggle" role="radiogroup" aria-label="Layout">
+      <button type="button" data-view-set="grid" role="radio" aria-checked="false"><span class="dot"></span>Grid</button>
+      <button type="button" data-view-set="list" role="radio" aria-checked="true"><span class="dot"></span>List</button>
+    </div>
+    <div class="home__filter" role="radiogroup" aria-label="Filter by category">
+      <button type="button" data-filter-set="all" role="radio" aria-checked="true"><span class="dot"></span>All</button>
+      <button type="button" data-filter-set="photo" role="radio" aria-checked="false"><span class="dot"></span>Photo</button>
+      <button type="button" data-filter-set="video" role="radio" aria-checked="false"><span class="dot"></span>Video</button>
+      <button type="button" data-filter-set="marketing" role="radio" aria-checked="false"><span class="dot"></span>Marketing</button>
+      <button type="button" data-filter-set="design" role="radio" aria-checked="false"><span class="dot"></span>Design</button>
+    </div>
+  </div>
+
+  <ol class="projects projects--list">
+    {{ range $i, $p := $projects }}
+      {{ $cats := slice }}
+      {{ with $p.Params.categories }}{{ $cats = . }}{{ end }}
+      {{ $catSlug := lower (delimit $cats " ") }}
+      <li class="project" data-categories="{{ $catSlug }}" style="--n: {{ add $i 1 }};">
+        <a class="project__link" href="{{ $p.RelPermalink }}">
+          <span class="project__client">{{ $p.Params.client | default $p.Title }}</span>
+          <span class="project__title">{{ $p.Title }}</span>
+          <span class="project__cats">
+            {{ range $cats }}<span class="tag">[{{ . | upper }}]</span> {{ end }}
+          </span>
+          <span class="project__date">{{ dateFormat "01.2006" $p.Params.date }}</span>
+          {{ with $p.Params.cover }}
+            <span class="project__cover" aria-hidden="true">
+              <img src="{{ . | relURL }}" alt="">
+            </span>
+          {{ end }}
+        </a>
+      </li>
+    {{ end }}
+  </ol>
+</section>
+
+{{ end }}

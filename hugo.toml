@@ -1,0 +1,117 @@
+baseURL = "https://michalfecko.github.io/"
+languageCode = "en-us"
+title = "Michal Fecko"
+enableRobotsTXT = true
+
+disableKinds = ["taxonomy", "term"]
+
+[params]
+  name = "Michal Fecko"
+  role = "Visual Designer & Art Director"
+  location = "Bratislava, SK"
+  timezone = "Europe/Bratislava"
+  tagline = "Creating visual narratives at the intersection of art, design, and technology, always driven by curiosity, culture, and the pursuit of timeless creativity."
+  shortAbout = "Multidisciplinary creative blending art, design, and technology into distinctive visual narratives. Skilled at guiding ideas from concept to completion, always aiming for work that feels fresh yet timeless."
+  fullAbout = "Inspired by culture and experimentation, embraces new tools and perspectives to push creative boundaries. Believes in the power of thoughtful design to connect, inspire, and resonate."
+  email = "hello@michalfecko.sk"
+  phone = "+421 944 747 799"
+  websiteCredit = "Michal Fecko"
+
+  [[params.social]]
+    name = "LinkedIn"
+    url = "https://www.linkedin.com/in/michal-fecko/"
+  [[params.social]]
+    name = "Instagram"
+    url = "https://www.instagram.com/michalfecko/"
+  [[params.social]]
+    name = "YouTube"
+    url = "https://www.youtube.com/@MichalFeckoSlovakia"
+
+  [[params.servicesLeft]]
+    name = "Photography"
+  [[params.servicesLeft]]
+    name = "Videography"
+  [[params.servicesLeft]]
+    name = "Marketing Strategy"
+  [[params.servicesLeft]]
+    name = "Social Media Content Creation"
+
+  [[params.servicesRight]]
+    name = "Graphic Design"
+  [[params.servicesRight]]
+    name = "Web Design"
+  [[params.servicesRight]]
+    name = "Art Direction"
+
+  [[params.clientsLeft]]
+    name = "Ráno"
+    url = "https://www.instagram.com/rano_kaviaren/"
+  [[params.clientsLeft]]
+    name = "Kali"
+    url = "https://www.instagram.com/dezertkalimusic/"
+  [[params.clientsLeft]]
+    name = "IMT SMILE"
+    url = "https://www.instagram.com/imtsmile/"
+  [[params.clientsLeft]]
+    name = "Miro Jaroš"
+    url = "https://www.instagram.com/jarosmiro/"
+  [[params.clientsLeft]]
+    name = "Divadlo DPM"
+    url = "https://www.instagram.com/divadlodpm/"
+  [[params.clientsLeft]]
+    name = "Pierre Lexis"
+    url = "https://www.instagram.com/pierrelexis/"
+  [[params.clientsLeft]]
+    name = "SZUŠ Ludus"
+    url = "https://www.instagram.com/skolaludus/"
+
+  [[params.clientsRight]]
+    name = "Picoballoon"
+    url = "https://www.instagram.com/thepicoballoon/"
+  [[params.clientsRight]]
+    name = "Noove"
+    url = "https://www.instagram.com/trynoove/"
+  [[params.clientsRight]]
+    name = "Sakito"
+    url = "https://www.instagram.com/sakitoandeviltwin/"
+  [[params.clientsRight]]
+    name = "Sudolabs"
+    url = "https://www.instagram.com/sudolabs_com/"
+  [[params.clientsRight]]
+    name = "Lora Fiore"
+    url = "https://lorafiore.sk/"
+  [[params.clientsRight]]
+    name = "Svoradov"
+    url = "https://svoradov.abuba.sk/"
+
+  [[params.recognition]]
+    text = "CINEAMA — Best Documentary Picture, 2022"
+  [[params.recognition]]
+    text = "Grow with Google Student Ambassador, 2021"
+  [[params.recognition]]
+    text = "AT&T — Winner of Innovation Camp, 2018"
+
+[menu]
+  [[menu.main]]
+    name = "Index"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    name = "Info"
+    url = "/info/"
+    weight = 2
+  [[menu.main]]
+    name = "Contact"
+    url = "/contact/"
+    weight = 3
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[outputs]
+  home = ["HTML", "RSS"]
+
+[permalinks]
+  projects = "/projects/:slug/"

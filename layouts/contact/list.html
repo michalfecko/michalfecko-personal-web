@@ -1,0 +1,24 @@
+{{ define "title" }}Contact — {{ .Site.Title }}{{ end }}
+{{ define "main" }}
+<section class="contact">
+  <div class="contact__row">
+    <h2 class="contact__label">Business</h2>
+    <div class="contact__body">
+      <p><a href="mailto:{{ .Site.Params.email }}">{{ .Site.Params.email }}</a></p>
+      {{ with .Site.Params.phone }}<p>{{ . }}</p>{{ end }}
+    </div>
+  </div>
+
+  <div class="contact__row">
+    <h2 class="contact__label">Social</h2>
+    <div class="contact__body">
+      <ul class="contact__social">
+        {{ range .Site.Params.social }}
+          <li><a href="{{ .url }}" rel="noopener"><span class="arrow" aria-hidden="true">→</span>&nbsp;{{ .name }}</a></li>
+        {{ end }}
+      </ul>
+    </div>
+  </div>
+
+</section>
+{{ end }}

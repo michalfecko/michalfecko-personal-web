@@ -1,0 +1,69 @@
+{{ define "title" }}{{ .Title }} — {{ .Site.Title }}{{ end }}
+{{ define "main" }}
+{{ if eq .Section "projects" }}
+  <article class="project-page">
+    <header class="project-page__meta">
+      <dl class="project-page__details">
+        <dt>Project</dt><dd>{{ .Title }}</dd>
+        <dt>Client</dt><dd>{{ .Params.client | default .Title }}</dd>
+        {{ with .Params.categories }}<dt>Category</dt><dd>{{ range . }}<span class="tag">[{{ . | upper }}]</span> {{ end }}</dd>{{ end }}
+        <dt>Year</dt><dd>{{ dateFormat "01.2006" .Params.date }}</dd>
+      </dl>
+    </header>
+
+    {{ $gallery := .Params.gallery }}
+    {{ $videoExts := slice ".mp4" ".webm" ".mov" ".m4v" ".ogv" }}
+    {{ if not $gallery }}
+      {{ $base := .File.ContentBaseName }}
+      {{ $dir := printf "static/img/projects/%s" $base }}
+      {{ $coverName := "" }}
+      {{ with .Params.cover }}{{ $coverName = path.Base . }}{{ end }}
+      {{ if os.FileExists $dir }}
+        {{ $imgExts := slice ".jpg" ".jpeg" ".png" ".webp" ".gif" ".avif" ".svg" }}
+        {{ $allExts := union $imgExts $videoExts }}
+        {{ range (readDir $dir) }}
+          {{ if and (not .IsDir) (in $allExts (lower (path.Ext .Name))) (ne .Name $coverName) }}
+            {{ $gallery = $gallery | append (dict "src" (printf "/img/projects/%s/%s" $base .Name) "alt" "") }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+    {{ with $gallery }}
+    <div class="project-page__gallery">
+      {{ range . }}
+        <figure>
+          {{ $ext := lower (path.Ext (.src | default "")) }}
+          {{ if .youtube }}
+            <div class="project-page__embed">
+              <iframe src="https://www.youtube-nocookie.com/embed/{{ .youtube }}" title="{{ .alt | default "YouTube video" }}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+          {{ else if .vimeo }}
+            <div class="project-page__embed">
+              <iframe src="https://player.vimeo.com/video/{{ .vimeo }}" title="{{ .alt | default "Vimeo video" }}" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          {{ else if or (eq .type "video") (in $videoExts $ext) }}
+            <video src="{{ .src | relURL }}"{{ with .poster }} poster="{{ . | relURL }}"{{ end }} controls preload="metadata" playsinline{{ if .loop }} loop muted{{ end }}{{ if .autoplay }} autoplay muted playsinline{{ end }}></video>
+          {{ else }}
+            <img src="{{ .src | relURL }}" alt="{{ .alt }}" loading="lazy">
+          {{ end }}
+          {{ with .caption }}<figcaption>{{ . }}</figcaption>{{ end }}
+        </figure>
+      {{ end }}
+    </div>
+    {{ end }}
+
+    {{ with .Content }}
+      <div class="project-page__intro">{{ . }}</div>
+    {{ end }}
+
+    <nav class="project-page__nav">
+      <a href="{{ "/" | relURL }}"><span class="arrow" aria-hidden="true">←</span>&nbsp;Back to index</a>
+    </nav>
+  </article>
+{{ else }}
+  <article class="page">
+    <h1>{{ .Title }}</h1>
+    {{ .Content }}
+  </article>
+{{ end }}
+{{ end }}

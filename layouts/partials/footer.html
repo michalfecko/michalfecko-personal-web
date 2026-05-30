@@ -1,0 +1,23 @@
+<footer class="site-footer">
+  <div class="site-footer__col site-footer__col--name">
+    <span>{{ .Site.Params.name }}</span>
+  </div>
+  <div class="site-footer__col site-footer__col--tagline">
+    <p>{{ .Site.Params.tagline }}</p>
+    <ul class="site-footer__social" aria-label="Social and contact">
+      {{ range .Site.Params.social }}
+        <li><a href="{{ .url }}" rel="noopener"><span class="arrow" aria-hidden="true">→</span>&nbsp;{{ .name }}</a></li>
+      {{ end }}
+      <li class="site-footer__contact"><a href="{{ "/contact/" | relURL }}"><span class="arrow" aria-hidden="true">→</span>&nbsp;Contact</a></li>
+    </ul>
+  </div>
+  <div class="site-footer__col site-footer__col--meta">
+    <span>{{ .Site.Params.location }}&nbsp;<span data-local-time data-tz="{{ .Site.Params.timezone }}">--:-- --</span></span>
+  </div>
+  <div class="site-footer__col site-footer__col--copy">
+    <span>© Copyright {{ .Site.Params.copyrightYear | default (now.Format "2006") }}</span>
+  </div>
+  <div class="site-footer__col site-footer__col--credit">
+    <span>Website by {{ .Site.Params.websiteCredit }}</span>
+  </div>
+</footer>
