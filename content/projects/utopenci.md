@@ -3,7 +3,7 @@ title: "Utopenci"
 client: "Divadlo DPM"
 date: 2026-05-08
 categories: ["photo"]
-cover: /img/projects/utopenci/utopenci.png
+cover: /img/projects/utopenci/utopenci.webp
 ---
 
 **"Utopenci"** is based on the diaries and works of M.A. Bulgakov, a prominent Russian writer who spent his entire life fighting against the repression of the Stalinist regime.

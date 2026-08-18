@@ -46,7 +46,7 @@
   });
   var storedView = null;
   try { storedView = localStorage.getItem('view'); } catch (e) {}
-  applyView(storedView === 'grid' || storedView === 'list' ? storedView : 'list');
+  applyView(storedView === 'grid' || storedView === 'list' ? storedView : 'grid');
 
   // ----- Filter (all / graphic / art / interior) -----
   function applyFilter(cat) {

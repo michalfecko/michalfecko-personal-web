@@ -3,7 +3,7 @@ title: "Noove Marketing and Communication"
 client: "Noove"
 date: 2025-08-01
 categories: ["marketing", "design"]
-cover: /img/projects/noove/noove.jpeg
+cover: /img/projects/noove/noove.webp
 ---
 
 Noove was a unique startup founded by Adam Bednář and Jakub Nagy (both Forbes 30 under 30). Our core mission was bridging the gap between established enterprises and young talent.

@@ -3,7 +3,7 @@ title: "FD-11 Datasheet"
 client: "Project Picoballoon"
 date: 2025-10-14
 categories: ["marketing", "design"]
-cover: /img/projects/picoballoon/picoballoon.png
+cover: /img/projects/picoballoon/picoballoon.webp
 ---
 
 

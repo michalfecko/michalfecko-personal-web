@@ -3,11 +3,11 @@
 {{ $projects = $projects.ByParam "date" | first 1000 }}
 {{ $projects = sort $projects "Params.date" "desc" }}
 
-<section class="home" data-view="list">
+<section class="home" data-view="grid">
   <div class="home__controls" role="group" aria-label="Project view">
     <div class="home__toggle" role="radiogroup" aria-label="Layout">
-      <button type="button" data-view-set="grid" role="radio" aria-checked="false"><span class="dot"></span>Grid</button>
-      <button type="button" data-view-set="list" role="radio" aria-checked="true"><span class="dot"></span>List</button>
+      <button type="button" data-view-set="grid" role="radio" aria-checked="true"><span class="dot"></span>Grid</button>
+      <button type="button" data-view-set="list" role="radio" aria-checked="false"><span class="dot"></span>List</button>
     </div>
     <div class="home__filter" role="radiogroup" aria-label="Filter by category">
       <button type="button" data-filter-set="all" role="radio" aria-checked="true"><span class="dot"></span>All</button>
@@ -18,7 +18,7 @@
     </div>
   </div>
 
-  <ol class="projects projects--list">
+  <ol class="projects projects--grid">
     {{ range $i, $p := $projects }}
       {{ $cats := slice }}
       {{ with $p.Params.categories }}{{ $cats = . }}{{ end }}
